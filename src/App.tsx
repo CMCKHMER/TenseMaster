@@ -30,6 +30,8 @@ export default function App() {
   const [soundEnabled, setSoundEnabled] = useState(true);
   const [menuAnim, setMenuAnim] = useState(false);
   const [newLevelUnlocked, setNewLevelUnlocked] = useState<string | null>(null);
+  const [bestStreak, setBestStreak] = useState(0);
+  const [wrongAnswers, setWrongAnswers] = useState<{ question: QuizQuestion; selected: number }[]>([]);
 
   const currentTense = tenses[currentTenseIndex];
   const currentQuestion: QuizQuestion | undefined = currentTense?.quiz[currentQuestionIndex];
@@ -41,9 +43,9 @@ export default function App() {
       setUnlockedLevels(data.unlockedLevels || ['basic']);
       setCompletedTenses(data.completedTenses || []);
       setTotalXP(data.totalXP || 0);
+      setBestStreak(data.bestStreak || 0);
     }
     setTimeout(() => setMenuAnim(true), 100);
-    // Play school bell on first load
     const timer = setTimeout(() => {
       if (soundEnabled) playBell();
     }, 500);
@@ -54,11 +56,44 @@ export default function App() {
     localStorage.setItem('tenseGameProgress', JSON.stringify({
       unlockedLevels,
       completedTenses,
-      totalXP
+      totalXP,
+      bestStreak
     }));
-  }, [unlockedLevels, completedTenses, totalXP]);
+  }, [unlockedLevels, completedTenses, totalXP, bestStreak]);
 
   const sfx = (fn: () => void) => { if (soundEnabled) fn(); };
+
+  // Keyboard shortcuts: 1-4 to answer in quiz, Enter for Next, Esc for Back
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (gameState === 'quiz') {
+        if (selectedAnswer === null && ['1', '2', '3', '4'].includes(e.key)) {
+          const idx = parseInt(e.key) - 1;
+          if (currentQuestion && idx < currentQuestion.options.length) {
+            handleAnswer(idx);
+          }
+        }
+        else if (selectedAnswer === null && ['a', 'b', 'c', 'd', 'A', 'B', 'C', 'D'].includes(e.key)) {
+          const idx = e.key.toLowerCase().charCodeAt(0) - 97;
+          if (currentQuestion && idx < currentQuestion.options.length) {
+            handleAnswer(idx);
+          }
+        }
+        else if (selectedAnswer !== null && e.key === 'Enter') {
+          nextQuestion();
+        }
+      }
+      else if (e.key === 'Escape') {
+        if (gameState === 'learn' || gameState === 'results' || gameState === 'complete') {
+          sfx(playClick);
+          setGameState('menu');
+        }
+      }
+    };
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, [gameState, selectedAnswer, currentQuestion, currentQuestionIndex]);
+
 
   const getLevelColor = (level: string) => {
     switch (level) {
@@ -103,6 +138,7 @@ export default function App() {
     setShowExplanation(false);
     setCurrentScore(0);
     setStreak(0);
+    setWrongAnswers([]);
     setGameState('quiz');
   };
 
@@ -116,6 +152,7 @@ export default function App() {
       setCurrentScore(prev => prev + 1);
       const newStreak = streak + 1;
       setStreak(newStreak);
+      if (newStreak > bestStreak) setBestStreak(newStreak);
       if (newStreak >= 3) sfx(playStreak);
       setShowConfetti(true);
     } else {
@@ -123,6 +160,9 @@ export default function App() {
       setStreak(0);
       setShakeCard(true);
       setTimeout(() => setShakeCard(false), 500);
+      if (currentQuestion) {
+        setWrongAnswers(prev => [...prev, { question: currentQuestion, selected: index }]);
+      }
     }
   };
 
@@ -188,6 +228,8 @@ export default function App() {
     setUnlockedLevels(['basic']);
     setCompletedTenses([]);
     setTotalXP(0);
+    setBestStreak(0);
+    setWrongAnswers([]);
     setQuizResults([]);
     setGameState('menu');
   };
@@ -331,6 +373,10 @@ export default function App() {
           <div className="bg-amber-800/40 backdrop-blur-sm rounded-xl px-5 py-3 border-2 border-amber-700/50 shadow-[0_4px_0_0_#451a03] transition-transform hover:scale-105">
             <span className="text-2xl font-bold text-blue-300">{getProgressPercentage()}%</span>
             <span className="text-amber-300/70 ml-2 text-sm">Complete</span>
+          </div>
+          <div className="bg-amber-800/40 backdrop-blur-sm rounded-xl px-5 py-3 border-2 border-amber-700/50 shadow-[0_4px_0_0_#451a03] transition-transform hover:scale-105">
+            <span className="text-2xl font-bold text-orange-400">🔥 {bestStreak}</span>
+            <span className="text-amber-300/70 ml-2 text-sm">Best Streak</span>
           </div>
           {/* Sound toggle */}
           <button
@@ -689,7 +735,15 @@ export default function App() {
             >
               {currentQuestionIndex < currentTense.quiz.length - 1 ? 'Next Question →' : '🏆 See Results →'}
             </Button3D>
+            <p className="text-slate-600 text-xs mt-2">Press <kbd className="px-1.5 py-0.5 bg-slate-800 rounded border border-slate-600 text-slate-300 text-xs">Enter</kbd></p>
           </div>
+        )}
+
+        {/* Keyboard hint */}
+        {selectedAnswer === null && (
+          <p className="text-slate-600 text-xs text-center mt-4">
+            Tip: use keys <kbd className="px-1.5 py-0.5 bg-slate-800 rounded border border-slate-600 text-slate-300">1-4</kbd> or <kbd className="px-1.5 py-0.5 bg-slate-800 rounded border border-slate-600 text-slate-300">A-D</kbd> to answer
+          </p>
         )}
       </div>
     </div>
@@ -754,6 +808,41 @@ export default function App() {
             <div className="bg-gradient-to-r from-yellow-500/20 to-amber-500/20 border-2 border-yellow-500/50 rounded-2xl p-4 mb-6 animate-bounce-in">
               <p className="text-yellow-300 font-bold text-lg">🔓 New Level Unlocked!</p>
               <p className="text-yellow-200/70">{getLevelLabel(newLevelUnlocked)} Tenses are now available!</p>
+            </div>
+          )}
+
+          {/* Wrong answers review */}
+          {wrongAnswers.length > 0 && (
+            <div className="bg-red-500/10 border-2 border-red-500/30 rounded-2xl p-6 mb-6 text-left">
+              <h3 className="font-bold text-red-300 mb-3 flex items-center gap-2">
+                <span>📝</span> Review your mistakes ({wrongAnswers.length})
+              </h3>
+              <div className="space-y-3 max-h-64 overflow-y-auto pr-2">
+                {wrongAnswers.map((item, i) => (
+                  <div key={i} className="bg-slate-900/50 border border-red-500/20 rounded-xl p-3">
+                    <p className="text-slate-200 mb-2 text-sm">
+                      <span className="text-slate-500 mr-2">Q{i + 1}.</span>
+                      {item.question.sentence}
+                    </p>
+                    <div className="flex flex-wrap gap-2 text-xs">
+                      <span className="bg-red-500/20 border border-red-500/40 text-red-200 px-2 py-1 rounded">
+                        Your answer: {item.question.options[item.selected]}
+                      </span>
+                      <span className="bg-green-500/20 border border-green-500/40 text-green-200 px-2 py-1 rounded">
+                        Correct: {item.question.options[item.question.correctIndex]}
+                      </span>
+                    </div>
+                    <p className="text-slate-400 text-xs mt-2 italic">{item.question.explanation}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Best streak display */}
+          {bestStreak > 0 && (
+            <div className="text-orange-400 text-sm font-medium mb-4">
+              🔥 Best streak this session: <span className="font-bold">{bestStreak} in a row</span>
             </div>
           )}
 

@@ -71,6 +71,20 @@ export const tenses: TenseLevel[] = [
         options: ['Do / eat', 'Does / eat', 'Are / eating', 'Is / eating'],
         correctIndex: 0,
         explanation: 'For questions with "you" in simple present, we use "Do" + base verb.'
+      },
+      {
+        id: 5,
+        sentence: 'The library ___ at 9 AM every weekday.',
+        options: ['open', 'opens', 'opening', 'opened'],
+        correctIndex: 1,
+        explanation: '"The library" is third person singular (it), so the verb takes -s: "opens".'
+      },
+      {
+        id: 6,
+        sentence: 'He ___ early on Sundays.',
+        options: ['don\'t wake up', 'doesn\'t wakes up', 'doesn\'t wake up', 'not wake up'],
+        correctIndex: 2,
+        explanation: 'Negative simple present with "he/she/it" uses "doesn\'t" + base verb (no -s on the main verb).'
       }
     ]
   },
@@ -123,6 +137,20 @@ export const tenses: TenseLevel[] = [
         options: ['do / know', 'did / know', 'did / knew', 'were / knowing'],
         correctIndex: 1,
         explanation: 'Negative simple past: "did not" + base verb. After "did not", we always use the base form.'
+      },
+      {
+        id: 5,
+        sentence: 'When I was a child, I ___ to play the piano.',
+        options: ['learn', 'learned', 'have learned', 'am learning'],
+        correctIndex: 1,
+        explanation: '"When I was a child" puts the action clearly in the past. Regular verb "learn" + -ed = "learned".'
+      },
+      {
+        id: 6,
+        sentence: 'She ___ the cake and ___ it on the table.',
+        options: ['bakes / puts', 'baked / put', 'baked / putted', 'has baked / put'],
+        correctIndex: 1,
+        explanation: 'A series of completed past actions. "Bake" is regular (baked); "put" is irregular — same form in past and present.'
       }
     ]
   },
@@ -176,6 +204,20 @@ export const tenses: TenseLevel[] = [
         options: ['Do', 'Did', 'Will', 'Are'],
         correctIndex: 2,
         explanation: '"Will" is used for requests and asking about future willingness.'
+      },
+      {
+        id: 5,
+        sentence: 'I ___ call you as soon as I arrive.',
+        options: ['will', 'am', 'was', 'have'],
+        correctIndex: 0,
+        explanation: 'A promise about a future action → "will" + base verb. "Will call" = promise to call.'
+      },
+      {
+        id: 6,
+        sentence: 'Don\'t worry, I ___ tell anyone your secret.',
+        options: ['will not', 'will', 'am not', 'did not'],
+        correctIndex: 0,
+        explanation: 'A negative promise about the future uses "will not" (or "won\'t"). The base verb "tell" follows.'
       }
     ]
   },
@@ -231,6 +273,20 @@ export const tenses: TenseLevel[] = [
         options: ['look', 'looked', 'am looking', 'have looked'],
         correctIndex: 2,
         explanation: '"These days" indicates a temporary, ongoing situation. Present Continuous is correct.'
+      },
+      {
+        id: 5,
+        sentence: 'The climate ___ warmer every year.',
+        options: ['gets', 'is getting', 'got', 'has gotten'],
+        correctIndex: 1,
+        explanation: 'A changing/developing situation uses Present Continuous: "is getting".'
+      },
+      {
+        id: 6,
+        sentence: 'Why ___ you ___ at me like that?',
+        options: ['do / look', 'are / looking', 'did / look', 'were / looking'],
+        correctIndex: 1,
+        explanation: 'An action happening at the moment of speaking → Present Continuous: "are looking".'
       }
     ]
   },
@@ -284,6 +340,20 @@ export const tenses: TenseLevel[] = [
         options: ['played', 'were playing', 'play', 'have played'],
         correctIndex: 1,
         explanation: '"All morning yesterday" emphasizes the duration of an ongoing past action. Past Continuous fits best.'
+      },
+      {
+        id: 5,
+        sentence: 'At 8 PM last night, I ___ dinner.',
+        options: ['cook', 'cooked', 'was cooking', 'have cooked'],
+        correctIndex: 2,
+        explanation: 'An action in progress at a specific past time (8 PM last night) → Past Continuous: "was cooking".'
+      },
+      {
+        id: 6,
+        sentence: 'The phone ___ while I ___ a shower.',
+        options: ['rang / took', 'rang / was taking', 'was ringing / took', 'rings / am taking'],
+        correctIndex: 1,
+        explanation: 'A short action (phone rang) interrupts an ongoing past action → interrupter in Simple Past, ongoing in Past Continuous.'
       }
     ]
   },
@@ -337,6 +407,20 @@ export const tenses: TenseLevel[] = [
         options: ['lived', 'have lived', 'were living', 'are living'],
         correctIndex: 1,
         explanation: '"Since 2015" (from past until now) requires Present Perfect. The situation continues to the present.'
+      },
+      {
+        id: 5,
+        sentence: 'I ___ my homework, so I can relax now.',
+        options: ['finish', 'finished', 'have finished', 'was finishing'],
+        correctIndex: 2,
+        explanation: 'A recently completed action with a present result (I can relax now) → Present Perfect: "have finished".'
+      },
+      {
+        id: 6,
+        sentence: 'She ___ already ___ to the bank.',
+        options: ['has / gone', 'have / went', 'has / went', 'had / gone'],
+        correctIndex: 0,
+        explanation: '"Already" is a Present Perfect signal. Use "has gone" (third person singular) + past participle "gone".'
       }
     ]
   },
@@ -392,6 +476,20 @@ export const tenses: TenseLevel[] = [
         options: ['read', 'had read', 'has read', 'was reading'],
         correctIndex: 1,
         explanation: 'Reported speech: when the reporting verb is past ("told"), the reported action shifts to Past Perfect.'
+      },
+      {
+        id: 5,
+        sentence: 'By the time we ___ at the station, the train ___.',
+        options: ['arrived / left', 'arrived / had left', 'had arrived / left', 'arrive / leaves'],
+        correctIndex: 1,
+        explanation: 'Two past events: arriving (later) and train leaving (earlier). The earlier one uses Past Perfect: "had left".'
+      },
+      {
+        id: 6,
+        sentence: 'I wish I ___ that opportunity.',
+        options: ['took', 'had taken', 'have taken', 'will take'],
+        correctIndex: 1,
+        explanation: 'Wishes/regrets about the past use Past Perfect: "I wish I had taken...".'
       }
     ]
   },
@@ -444,6 +542,20 @@ export const tenses: TenseLevel[] = [
         options: ['Will / finish', 'Will / have finished', 'Do / finish', 'Are / finishing'],
         correctIndex: 1,
         explanation: 'Asking about completion before a future deadline → Future Perfect: "Will you have finished...?"'
+      },
+      {
+        id: 5,
+        sentence: 'By the time you read this, I ___ already ___.',
+        options: ['will / leave', 'will / have left', 'have / left', 'am / leaving'],
+        correctIndex: 1,
+        explanation: 'An action completed before a future moment → Future Perfect: "will have left".'
+      },
+      {
+        id: 6,
+        sentence: 'She ___ her novel by next month.',
+        options: ['finishes', 'will finish', 'will have finished', 'is finishing'],
+        correctIndex: 2,
+        explanation: '"By next month" is a future deadline → Future Perfect: "will have finished".'
       }
     ]
   },
@@ -497,6 +609,20 @@ export const tenses: TenseLevel[] = [
         options: ['rains', 'rained', 'has been raining', 'is raining'],
         correctIndex: 2,
         explanation: '"Since 6 AM" + ongoing action (still raining or just stopped) = Present Perfect Continuous.'
+      },
+      {
+        id: 5,
+        sentence: 'He ___ from home lately.',
+        options: ['works', 'worked', 'has been working', 'is working'],
+        correctIndex: 2,
+        explanation: '"Lately" suggests a recent ongoing pattern → Present Perfect Continuous: "has been working".'
+      },
+      {
+        id: 6,
+        sentence: 'They ___ for three hours and they\'re still not finished.',
+        options: ['waited', 'have waited', 'have been waiting', 'are waiting'],
+        correctIndex: 2,
+        explanation: 'Duration + still ongoing ("they\'re still not finished") → Present Perfect Continuous: "have been waiting".'
       }
     ]
   },
@@ -551,6 +677,20 @@ export const tenses: TenseLevel[] = [
         options: ['did / search', 'had / searched', 'had / been searching', 'were / searching'],
         correctIndex: 2,
         explanation: 'Duration of ongoing action before a past event → Past Perfect Continuous: "had been searching".'
+      },
+      {
+        id: 5,
+        sentence: 'She ___ for hours before she finally understood the problem.',
+        options: ['worked', 'had worked', 'had been working', 'was working'],
+        correctIndex: 2,
+        explanation: 'An ongoing past activity emphasizing duration before a past result → Past Perfect Continuous.'
+      },
+      {
+        id: 6,
+        sentence: 'They ___ friends for years before they started dating.',
+        options: ['were', 'had been', 'have been', 'had been being'],
+        correctIndex: 1,
+        explanation: '"For years" of being friends before a past event (started dating) → Past Perfect (stative verb) or Past Perfect Continuous with action verbs. With "be", use Past Perfect: "had been".'
       }
     ]
   },
@@ -604,6 +744,20 @@ export const tenses: TenseLevel[] = [
         options: ['set', 'will set', 'will be setting', 'am setting'],
         correctIndex: 2,
         explanation: 'Parallel future actions both in progress → Future Continuous for both: "will be setting".'
+      },
+      {
+        id: 5,
+        sentence: 'At 10 AM tomorrow, the team ___ the report.',
+        options: ['discusses', 'will discuss', 'will be discussing', 'discussed'],
+        correctIndex: 2,
+        explanation: 'An action in progress at a specific future time → Future Continuous: "will be discussing".'
+      },
+      {
+        id: 6,
+        sentence: 'This time next month, we ___ our final exams.',
+        options: ['take', 'will take', 'will be taking', 'have taken'],
+        correctIndex: 2,
+        explanation: '"This time next month" + action in progress → Future Continuous: "will be taking".'
       }
     ]
   },
@@ -656,6 +810,20 @@ export const tenses: TenseLevel[] = [
         options: ['live', 'will live', 'will have been living', 'have lived'],
         correctIndex: 2,
         explanation: 'Predicted duration at a future point → Future Perfect Continuous: "will have been living".'
+      },
+      {
+        id: 5,
+        sentence: 'By June, I ___ at this company for a decade.',
+        options: ['work', 'will work', 'will have been working', 'am working'],
+        correctIndex: 2,
+        explanation: '"By June" + duration of ongoing action up to that point → Future Perfect Continuous.'
+      },
+      {
+        id: 6,
+        sentence: 'By next summer, she ___ to play the violin for five years.',
+        options: ['learns', 'will learn', 'will have been learning', 'is learning'],
+        correctIndex: 2,
+        explanation: 'Continuous duration that will continue up to a future point → Future Perfect Continuous: "will have been learning".'
       }
     ]
   }

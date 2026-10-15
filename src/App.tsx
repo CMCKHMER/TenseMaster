@@ -291,11 +291,11 @@ export default function App() {
     const [isPressed, setIsPressed] = useState(false);
 
     const variants = {
-      primary: 'bg-gradient-to-b from-indigo-400 to-indigo-600 hover:from-indigo-300 hover:to-indigo-500 text-white shadow-[0_6px_0_0_#3730a3,0_8px_20px_rgba(79,70,229,0.4)] hover:shadow-[0_4px_0_0_#3730a3,0_6px_15px_rgba(79,70,229,0.5)]',
-      secondary: 'bg-gradient-to-b from-slate-500 to-slate-700 hover:from-slate-400 hover:to-slate-600 text-white shadow-[0_6px_0_0_#1e293b,0_8px_20px_rgba(51,65,85,0.4)] hover:shadow-[0_4px_0_0_#1e293b,0_6px_15px_rgba(51,65,85,0.5)]',
-      success: 'bg-gradient-to-b from-green-400 to-green-600 hover:from-green-300 hover:to-green-500 text-white shadow-[0_6px_0_0_#166534,0_8px_20px_rgba(34,197,94,0.4)] hover:shadow-[0_4px_0_0_#166534,0_6px_15px_rgba(34,197,94,0.5)]',
-      danger: 'bg-gradient-to-b from-red-400 to-red-600 hover:from-red-300 hover:to-red-500 text-white shadow-[0_6px_0_0_#991b1b,0_8px_20px_rgba(239,68,68,0.4)] hover:shadow-[0_4px_0_0_#991b1b,0_6px_15px_rgba(239,68,68,0.5)]',
-      chalk: 'bg-gradient-to-b from-amber-100 to-amber-200 hover:from-amber-50 hover:to-amber-100 text-amber-900 shadow-[0_6px_0_0_#92400e,0_8px_20px_rgba(146,64,14,0.3)] hover:shadow-[0_4px_0_0_#92400e,0_6px_15px_rgba(146,64,14,0.4)]',
+      primary: 'bg-gradient-to-r from-cyan-300 to-violet-400 hover:from-cyan-200 hover:to-violet-300 text-slate-950 shadow-[0_8px_24px_rgba(34,211,238,0.25)] hover:shadow-[0_12px_32px_rgba(34,211,238,0.4)]',
+      secondary: 'bg-white/[0.06] hover:bg-white/[0.10] text-slate-100 border border-white/10 hover:border-cyan-300/40',
+      success: 'bg-gradient-to-r from-teal-300 to-cyan-300 hover:from-teal-200 hover:to-cyan-200 text-slate-950 shadow-[0_8px_24px_rgba(94,234,212,0.25)] hover:shadow-[0_12px_32px_rgba(94,234,212,0.4)]',
+      danger: 'bg-gradient-to-r from-rose-400 to-pink-500 hover:from-rose-300 hover:to-pink-400 text-white shadow-[0_8px_24px_rgba(244,63,94,0.25)] hover:shadow-[0_12px_32px_rgba(244,63,94,0.4)]',
+      chalk: 'bg-white/[0.06] hover:bg-cyan-200/[0.10] text-cyan-100 border border-cyan-200/20 hover:border-cyan-200/40',
     };
 
     const handleClick = () => {
@@ -326,7 +326,7 @@ export default function App() {
 
   const renderMenu = () => (
     <div className="min-h-screen relative overflow-hidden" style={{
-      background: 'linear-gradient(180deg, #1a3a2a 0%, #0f2a1a 50%, #1a1a2e 100%)',
+      background: 'radial-gradient(ellipse at 72% 18%, rgba(34,211,238,0.16), transparent 42%), radial-gradient(ellipse at 12% 88%, rgba(139,92,246,0.18), transparent 42%), #020617',
     }}>
       {/* Chalkboard texture overlay */}
       <div className="absolute inset-0 opacity-20" style={{
@@ -334,8 +334,8 @@ export default function App() {
       }}></div>
 
       {/* Wooden frame border */}
-      <div className="absolute inset-0 pointer-events-none border-[12px] border-amber-900/60 rounded-none" style={{
-        boxShadow: 'inset 0 0 30px rgba(0,0,0,0.5)',
+      <div className="absolute inset-0 pointer-events-none border border-white/[0.06] rounded-none" style={{
+        boxShadow: 'inset 0 0 30px rgba(34,211,238,0.04)',
       }}></div>
 
       {/* Confetti */}
@@ -346,42 +346,41 @@ export default function App() {
         <div className={`text-center mb-10 transition-all duration-700 ${menuAnim ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}>
           {/* Chalk-style title */}
           <div className="relative inline-block">
-            <h1 className="text-5xl md:text-7xl font-bold text-white/90 tracking-wide" style={{
-              fontFamily: 'Georgia, serif',
-              textShadow: '2px 2px 4px rgba(0,0,0,0.5), 0 0 10px rgba(255,255,255,0.1)',
-              letterSpacing: '0.05em',
+            <h1 className="font-display text-5xl md:text-7xl font-bold tracking-tight" style={{
+              fontFamily: 'Syne, sans-serif',
+              letterSpacing: '-0.01em',
             }}>
-              ✏️ Tense Master
+              <span className="cmc-gradient-text">Tense Master</span>
             </h1>
-            <div className="absolute -bottom-2 left-0 right-0 h-[3px] bg-white/30 rounded"></div>
+            <div className="absolute -bottom-2 left-0 right-0 h-[3px] bg-gradient-to-r from-cyan-300 via-teal-200 to-violet-300 rounded"></div>
           </div>
-          <p className="text-lg text-emerald-200/70 mt-4 font-serif italic">
-            "Learn English Verb Tenses — From Basics to Expert"
+          <p className="text-base text-slate-300 mt-4 font-grotesk" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+            Learn English Verb Tenses — From Basics to Expert
           </p>
         </div>
 
         {/* Stats Bar - Wooden desk style */}
         <div className={`flex items-center justify-center gap-4 flex-wrap mb-8 transition-all duration-700 delay-200 ${menuAnim ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}>
-          <div className="bg-amber-800/40 backdrop-blur-sm rounded-xl px-5 py-3 border-2 border-amber-700/50 shadow-[0_4px_0_0_#451a03] transition-transform hover:scale-105">
+          <div className="bg-white/[0.04] backdrop-blur-sm rounded-xl px-5 py-3 border border-white/10 transition-transform hover:scale-105 hover:bg-cyan-200/[0.08]">
             <span className="text-2xl font-bold text-yellow-300" style={{ textShadow: '0 0 10px rgba(253,224,71,0.5)' }}>⭐ {totalXP}</span>
             <span className="text-amber-300/70 ml-2 text-sm">XP</span>
           </div>
-          <div className="bg-amber-800/40 backdrop-blur-sm rounded-xl px-5 py-3 border-2 border-amber-700/50 shadow-[0_4px_0_0_#451a03] transition-transform hover:scale-105">
+          <div className="bg-white/[0.04] backdrop-blur-sm rounded-xl px-5 py-3 border border-white/10 transition-transform hover:scale-105 hover:bg-cyan-200/[0.08]">
             <span className="text-2xl font-bold text-green-300">{completedTenses.length}/{tenses.length}</span>
             <span className="text-amber-300/70 ml-2 text-sm">Tenses</span>
           </div>
-          <div className="bg-amber-800/40 backdrop-blur-sm rounded-xl px-5 py-3 border-2 border-amber-700/50 shadow-[0_4px_0_0_#451a03] transition-transform hover:scale-105">
+          <div className="bg-white/[0.04] backdrop-blur-sm rounded-xl px-5 py-3 border border-white/10 transition-transform hover:scale-105 hover:bg-cyan-200/[0.08]">
             <span className="text-2xl font-bold text-blue-300">{getProgressPercentage()}%</span>
             <span className="text-amber-300/70 ml-2 text-sm">Complete</span>
           </div>
-          <div className="bg-amber-800/40 backdrop-blur-sm rounded-xl px-5 py-3 border-2 border-amber-700/50 shadow-[0_4px_0_0_#451a03] transition-transform hover:scale-105">
+          <div className="bg-white/[0.04] backdrop-blur-sm rounded-xl px-5 py-3 border border-white/10 transition-transform hover:scale-105 hover:bg-cyan-200/[0.08]">
             <span className="text-2xl font-bold text-orange-400">🔥 {bestStreak}</span>
             <span className="text-amber-300/70 ml-2 text-sm">Best Streak</span>
           </div>
           {/* Sound toggle */}
           <button
             onClick={() => { setSoundEnabled(!soundEnabled); sfx(playClick); }}
-            className="bg-amber-800/40 backdrop-blur-sm rounded-xl px-4 py-3 border-2 border-amber-700/50 shadow-[0_4px_0_0_#451a03] transition-transform hover:scale-105 text-xl"
+            className="bg-white/[0.04] backdrop-blur-sm rounded-xl px-4 py-3 border border-white/10 transition-transform hover:scale-105 text-xl hover:bg-cyan-200/[0.08] hover:border-cyan-300/40"
           >
             {soundEnabled ? '🔊' : '🔇'}
           </button>
@@ -389,9 +388,9 @@ export default function App() {
 
         {/* Progress bar - Pencil style */}
         <div className="max-w-md mx-auto mb-10">
-          <div className="h-4 bg-amber-950/50 rounded-full overflow-hidden border-2 border-amber-800/50 shadow-inner">
+          <div className="h-4 bg-slate-900/80 rounded-full overflow-hidden border border-white/10 shadow-inner">
             <div
-              className="h-full bg-gradient-to-r from-yellow-400 via-amber-400 to-orange-400 rounded-full transition-all duration-1000 relative"
+              className="h-full bg-gradient-to-r from-cyan-300 via-teal-200 to-violet-300 rounded-full transition-all duration-1000 relative"
               style={{ width: `${getProgressPercentage()}%` }}
             >
               <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent"></div>
@@ -414,7 +413,7 @@ export default function App() {
             >
               <div className="flex items-center gap-3 mb-4">
                 <span className="text-3xl transform hover:scale-125 transition-transform">{getLevelIcon(level)}</span>
-                <h2 className="text-2xl font-bold text-white/90 font-serif">{getLevelLabel(level)} Tenses</h2>
+                <h2 className="text-2xl font-bold text-white/90 font-display">{getLevelLabel(level)} Tenses</h2>
                 {levelCompleted && (
                   <span className="text-green-400 text-sm font-medium bg-green-400/10 px-3 py-1 rounded-full border border-green-500/30 animate-pulse">✓ Complete</span>
                 )}
@@ -435,11 +434,11 @@ export default function App() {
                       onClick={() => isUnlocked ? startLearning(tenseIndex) : undefined}
                       className={`${isUnlocked ? 'cursor-pointer' : 'cursor-not-allowed opacity-40'}`}
                     >
-                      <div className={`relative p-5 rounded-2xl border-2 transition-all duration-300 ${
+                      <div className={`relative p-5 rounded-2xl border transition-all duration-300 ${
                         isUnlocked
-                          ? `bg-gradient-to-br from-slate-800/90 to-slate-900/90 ${isCompleted ? 'border-green-500/50' : 'border-slate-600/50'} hover:border-white/30`
-                          : 'bg-slate-900/60 border-slate-800/50'
-                      } ${cardHover === tense.id ? `shadow-lg shadow-indigo-500/20` : 'shadow-md shadow-black/30'}`}
+                          ? `bg-white/[0.04] backdrop-blur-sm ${isCompleted ? 'border-teal-300/40' : 'border-white/10'} hover:border-cyan-300/40 hover:bg-cyan-200/[0.06]`
+                          : 'bg-white/[0.02] border-white/5'
+                      } ${cardHover === tense.id ? `shadow-lg shadow-cyan-500/20` : 'shadow-md shadow-black/30'}`}
                       style={{ transformStyle: 'preserve-3d' }}
                       >
                         {/* Card shine effect */}
@@ -475,7 +474,7 @@ export default function App() {
         <div className="text-center mt-8 pb-6">
           <button
             onClick={resetProgress}
-            className="text-slate-500 hover:text-red-400 text-sm transition-colors underline underline-offset-4"
+            className="text-slate-500 hover:text-rose-300 text-sm transition-colors underline underline-offset-4"
           >
             Reset All Progress
           </button>
@@ -489,7 +488,7 @@ export default function App() {
 
     return (
       <div className="min-h-screen relative overflow-hidden" style={{
-        background: 'linear-gradient(180deg, #1a3a2a 0%, #0f2a1a 50%, #1a1a2e 100%)',
+        background: 'radial-gradient(ellipse at 72% 18%, rgba(34,211,238,0.16), transparent 42%), radial-gradient(ellipse at 12% 88%, rgba(139,92,246,0.18), transparent 42%), #020617',
       }}>
         {/* Chalkboard texture */}
         <div className="absolute inset-0 opacity-15" style={{
@@ -510,21 +509,21 @@ export default function App() {
           {/* Tense Title - Chalkboard header */}
           <div className="text-center mb-8 animate-fade-in">
             <div className="inline-block relative">
-              <h1 className="text-4xl md:text-5xl font-bold text-white/90 font-serif" style={{
+              <h1 className="text-4xl md:text-5xl font-bold text-white/90 font-display" style={{
                 textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
               }}>
                 📝 {currentTense.name}
               </h1>
               <div className="absolute -bottom-1 left-0 right-0 h-[2px] bg-white/20"></div>
             </div>
-            <p className="text-slate-300 font-mono text-lg mt-3 bg-slate-800/50 inline-block px-4 py-1 rounded-lg border border-slate-700/50">
+            <p className="text-slate-300 font-mono text-lg mt-3 bg-white/[0.04] inline-block px-4 py-1 rounded-lg border border-white/10">
               {currentTense.formula}
             </p>
           </div>
 
           {/* Explanation Card - 3D Notebook page */}
           <Card3D hoverId="explanation">
-            <div className="bg-amber-50/5 backdrop-blur-sm border-2 border-amber-800/30 rounded-2xl p-6 mb-6 shadow-xl relative overflow-hidden">
+            <div className="bg-white/[0.04] backdrop-blur-sm border border-white/10 rounded-2xl p-6 mb-6 shadow-xl relative overflow-hidden">
               {/* Notebook lines */}
               <div className="absolute inset-0 opacity-10" style={{
                 backgroundImage: 'repeating-linear-gradient(transparent, transparent 31px, #8b5e3c 31px, #8b5e3c 32px)',
@@ -533,7 +532,7 @@ export default function App() {
               <div className="absolute left-10 top-0 bottom-0 w-[2px] bg-red-400/20"></div>
 
               <div className="relative">
-                <h2 className="text-xl font-bold text-emerald-300 mb-3 flex items-center gap-2 font-serif">
+                <h2 className="text-xl font-bold text-cyan-200 mb-3 flex items-center gap-2 font-display">
                   <span>📖</span> Explanation
                 </h2>
                 <p className="text-slate-200 leading-relaxed text-lg pl-8">{currentTense.explanation}</p>
@@ -543,8 +542,8 @@ export default function App() {
 
           {/* Usage Card */}
           <Card3D hoverId="usage">
-            <div className="bg-slate-800/60 border-2 border-slate-600/30 rounded-2xl p-6 mb-6 shadow-xl">
-              <h2 className="text-xl font-bold text-green-300 mb-4 flex items-center gap-2 font-serif">
+            <div className="bg-white/[0.04] backdrop-blur-sm border border-white/10 rounded-2xl p-6 mb-6 shadow-xl">
+              <h2 className="text-xl font-bold text-teal-200 mb-4 flex items-center gap-2 font-display">
                 <span>🎯</span> When to Use
               </h2>
               <ul className="space-y-3">
@@ -560,13 +559,13 @@ export default function App() {
 
           {/* Examples Card */}
           <Card3D hoverId="examples">
-            <div className="bg-slate-800/60 border-2 border-slate-600/30 rounded-2xl p-6 mb-6 shadow-xl">
-              <h2 className="text-xl font-bold text-purple-300 mb-4 flex items-center gap-2 font-serif">
+            <div className="bg-white/[0.04] backdrop-blur-sm border border-white/10 rounded-2xl p-6 mb-6 shadow-xl">
+              <h2 className="text-xl font-bold text-violet-200 mb-4 flex items-center gap-2 font-display">
                 <span>💡</span> Examples
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 {currentTense.examples.map((ex, i) => (
-                  <div key={i} className="bg-slate-900/60 rounded-xl p-4 border border-slate-700/50 hover:border-purple-500/50 hover:bg-slate-900/80 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-purple-500/10 group">
+                  <div key={i} className="bg-white/[0.02] rounded-xl p-4 border border-white/10 hover:border-violet-300/40 hover:bg-violet-300/[0.04] transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-violet-500/15 group">
                     <p className="text-slate-200 italic group-hover:text-white transition-colors">"{ex}"</p>
                   </div>
                 ))}
@@ -576,13 +575,13 @@ export default function App() {
 
           {/* Signal Words */}
           <Card3D hoverId="signals">
-            <div className="bg-slate-800/60 border-2 border-slate-600/30 rounded-2xl p-6 mb-8 shadow-xl">
-              <h2 className="text-xl font-bold text-yellow-300 mb-4 flex items-center gap-2 font-serif">
+            <div className="bg-white/[0.04] backdrop-blur-sm border border-white/10 rounded-2xl p-6 mb-8 shadow-xl">
+              <h2 className="text-xl font-bold text-amber-200 mb-4 flex items-center gap-2 font-display">
                 <span>⚡</span> Signal Words
               </h2>
               <div className="flex flex-wrap gap-2">
                 {currentTense.signalWords.map((word, i) => (
-                  <span key={i} className="bg-yellow-400/10 border border-yellow-400/30 text-yellow-200 px-3 py-1.5 rounded-full text-sm hover:bg-yellow-400/20 hover:scale-110 transition-all duration-200 cursor-default">
+                  <span key={i} className="bg-amber-200/10 border border-amber-200/30 text-amber-100 px-3 py-1.5 rounded-full text-sm hover:bg-amber-200/20 hover:scale-110 transition-all duration-200 cursor-default">
                     {word}
                   </span>
                 ))}
@@ -604,7 +603,7 @@ export default function App() {
 
   const renderQuiz = () => (
     <div className="min-h-screen relative overflow-hidden" style={{
-      background: 'linear-gradient(180deg, #1a2a3a 0%, #0f1a2a 50%, #1a1a2e 100%)',
+      background: 'radial-gradient(ellipse at 72% 18%, rgba(34,211,238,0.16), transparent 42%), radial-gradient(ellipse at 12% 88%, rgba(139,92,246,0.18), transparent 42%), #020617',
     }}>
       {/* Animated background */}
       <div className="absolute inset-0 opacity-10">
@@ -618,7 +617,7 @@ export default function App() {
       <div className="relative z-10 max-w-3xl mx-auto px-4 py-8">
         {/* Quiz Header */}
         <div className="flex items-center justify-between mb-6">
-          <div className="text-slate-300 text-sm font-medium bg-slate-800/50 px-3 py-1.5 rounded-lg border border-slate-700/50">
+          <div className="text-slate-300 text-sm font-medium bg-white/[0.04] px-3 py-1.5 rounded-lg border border-white/10">
             📝 {currentTense.name}
           </div>
           <div className="flex items-center gap-3">
@@ -627,16 +626,16 @@ export default function App() {
                 🔥 {streak} streak!
               </div>
             )}
-            <div className="text-slate-400 text-sm bg-slate-800/50 px-3 py-1.5 rounded-lg border border-slate-700/50">
+            <div className="text-slate-400 text-sm bg-white/[0.04] px-3 py-1.5 rounded-lg border border-white/10">
               Q{currentQuestionIndex + 1}/{currentTense.quiz.length}
             </div>
           </div>
         </div>
 
         {/* Progress Bar */}
-        <div className="h-3 bg-slate-800 rounded-full mb-8 overflow-hidden border border-slate-700/50 shadow-inner">
+        <div className="h-3 bg-white/[0.04] rounded-full mb-8 overflow-hidden border border-white/10">
           <div
-            className="h-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-full transition-all duration-700 relative"
+            className="h-full bg-gradient-to-r from-cyan-300 via-teal-200 to-violet-300 rounded-full transition-all duration-700 relative"
             style={{ width: `${((currentQuestionIndex + 1) / currentTense.quiz.length) * 100}%` }}
           >
             <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent"></div>
@@ -645,10 +644,10 @@ export default function App() {
 
         {/* Question Card - 3D */}
         <Card3D hoverId="question">
-          <div className={`bg-slate-800/80 border-2 rounded-2xl p-8 mb-6 shadow-2xl transition-all duration-300 ${
-            shakeCard ? 'animate-shake border-red-500/50' :
-            selectedAnswer === currentQuestion!.correctIndex ? 'border-green-500/50' :
-            selectedAnswer !== null ? 'border-red-500/30' : 'border-slate-600/50'
+          <div className={`bg-white/[0.04] backdrop-blur-sm border rounded-2xl p-8 mb-6 shadow-2xl transition-all duration-300 ${
+            shakeCard ? 'animate-shake border-rose-400/50' :
+            selectedAnswer === currentQuestion!.correctIndex ? 'border-teal-300/40 shadow-[0_0_32px_rgba(94,234,212,0.18)]' :
+            selectedAnswer !== null ? 'border-rose-300/30' : 'border-white/10'
           }`}>
             <p className="text-sm text-slate-400 mb-3 uppercase tracking-wider font-medium">Fill in the blank:</p>
             <p className="text-2xl font-medium leading-relaxed text-white/90">
@@ -675,15 +674,15 @@ export default function App() {
         {/* Options - 3D Buttons */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
           {currentQuestion!.options.map((option, i) => {
-            let buttonClass = 'bg-gradient-to-b from-slate-700 to-slate-800 border-slate-600/50 hover:border-indigo-400/50 hover:from-slate-600 hover:to-slate-700 text-white shadow-[0_5px_0_0_#1e293b,0_7px_15px_rgba(0,0,0,0.3)] hover:shadow-[0_3px_0_0_#1e293b,0_5px_10px_rgba(0,0,0,0.4)]';
+            let buttonClass = 'bg-white/[0.04] border border-white/10 hover:border-cyan-300/40 hover:bg-cyan-200/[0.06] text-slate-100 shadow-sm hover:shadow-[0_8px_24px_rgba(34,211,238,0.15)]';
 
             if (selectedAnswer !== null) {
               if (i === currentQuestion!.correctIndex) {
-                buttonClass = 'bg-gradient-to-b from-green-500/30 to-green-600/30 border-green-500/70 text-green-200 shadow-[0_5px_0_0_#166534,0_0_20px_rgba(34,197,94,0.2)]';
+                buttonClass = 'bg-teal-300/[0.10] border-teal-300/60 text-teal-100 shadow-[0_0_20px_rgba(94,234,212,0.18)]';
               } else if (i === selectedAnswer && i !== currentQuestion!.correctIndex) {
-                buttonClass = 'bg-gradient-to-b from-red-500/30 to-red-600/30 border-red-500/70 text-red-200 shadow-[0_5px_0_0_#991b1b,0_0_20px_rgba(239,68,68,0.2)]';
+                buttonClass = 'bg-rose-400/[0.10] border-rose-400/60 text-rose-200 shadow-[0_0_20px_rgba(244,63,94,0.18)]';
               } else {
-                buttonClass = 'bg-slate-800/30 border-slate-800/30 opacity-40 text-slate-500 shadow-none';
+                buttonClass = 'bg-white/[0.02] border-white/5 opacity-40 text-slate-500 shadow-none';
               }
             }
 
@@ -696,7 +695,7 @@ export default function App() {
                   selectedAnswer === null ? 'cursor-pointer hover:-translate-y-1 active:translate-y-[3px] active:shadow-none' : 'cursor-default'
                 }`}
               >
-                <span className="text-slate-500 mr-3 font-bold text-sm bg-slate-900/50 w-7 h-7 inline-flex items-center justify-center rounded-full">
+                <span className="text-slate-500 mr-3 font-bold text-sm bg-white/[0.06] w-7 h-7 inline-flex items-center justify-center rounded-full border border-white/10">
                   {String.fromCharCode(65 + i)}
                 </span>
                 <span className="text-lg">{option}</span>
@@ -715,8 +714,8 @@ export default function App() {
         {showExplanation && (
           <div className={`rounded-2xl p-6 mb-6 border-2 animate-slide-up ${
             selectedAnswer === currentQuestion!.correctIndex
-              ? 'bg-green-500/10 border-green-500/30 shadow-lg shadow-green-500/10'
-              : 'bg-red-500/10 border-red-500/30 shadow-lg shadow-red-500/10'
+              ? 'bg-teal-300/[0.08] border-teal-300/30 shadow-lg shadow-teal-300/10'
+              : 'bg-rose-400/[0.08] border-rose-400/30 shadow-lg shadow-rose-400/10'
           }`}>
             <p className="font-bold mb-2 text-xl">
               {selectedAnswer === currentQuestion!.correctIndex ? '🎉 Correct!' : '💡 Not quite!'}
@@ -756,7 +755,7 @@ export default function App() {
 
     return (
       <div className="min-h-screen relative overflow-hidden flex items-center justify-center" style={{
-        background: 'linear-gradient(180deg, #1a2a3a 0%, #0f1a2a 50%, #1a1a2e 100%)',
+        background: 'radial-gradient(ellipse at 72% 18%, rgba(34,211,238,0.16), transparent 42%), radial-gradient(ellipse at 12% 88%, rgba(139,92,246,0.18), transparent 42%), #020617',
       }}>
         {/* Background effects */}
         <div className="absolute inset-0 opacity-10">
@@ -770,13 +769,13 @@ export default function App() {
           <div className="text-7xl mb-6 animate-bounce-in">
             {percentage === 100 ? '🏆' : percentage >= 75 ? '🎉' : percentage >= 50 ? '👍' : '📚'}
           </div>
-          <h1 className="text-4xl font-bold mb-2 font-serif text-white/90" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}>
+          <h1 className="text-4xl font-bold mb-2 font-display text-white/90" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}>
             {percentage === 100 ? 'Perfect Score!' : percentage >= 75 ? 'Great Job!' : percentage >= 50 ? 'Good Effort!' : 'Keep Practicing!'}
           </h1>
           <p className="text-slate-400 mb-6">{currentTense.name}</p>
 
           <Card3D hoverId="results">
-            <div className="bg-slate-800/80 border-2 border-slate-600/30 rounded-2xl p-8 mb-6 shadow-2xl">
+            <div className="bg-white/[0.04] backdrop-blur-sm border border-white/10 rounded-2xl p-8 mb-6 shadow-2xl">
               <div className="text-6xl font-bold mb-3">
                 <span className={percentage >= 75 ? 'text-green-400' : percentage >= 50 ? 'text-yellow-400' : 'text-red-400'} style={{
                   textShadow: percentage >= 75 ? '0 0 20px rgba(34,197,94,0.5)' : percentage >= 50 ? '0 0 20px rgba(234,179,8,0.5)' : '0 0 20px rgba(239,68,68,0.5)',
@@ -786,10 +785,10 @@ export default function App() {
               </div>
               <p className="text-slate-400 text-lg">{percentage}% correct</p>
 
-              <div className="mt-5 h-4 bg-slate-900 rounded-full overflow-hidden border border-slate-700">
+              <div className="mt-5 h-4 bg-slate-900/80 rounded-full overflow-hidden border border-white/10">
                 <div
                   className={`h-full rounded-full transition-all duration-1000 relative ${
-                    percentage >= 75 ? 'bg-gradient-to-r from-green-500 to-emerald-400' : percentage >= 50 ? 'bg-gradient-to-r from-yellow-500 to-amber-400' : 'bg-gradient-to-r from-red-500 to-rose-400'
+                    percentage >= 75 ? 'bg-gradient-to-r from-teal-300 to-cyan-300' : percentage >= 50 ? 'bg-gradient-to-r from-amber-300 to-amber-400' : 'bg-gradient-to-r from-rose-400 to-pink-500'
                   }`}
                   style={{ width: `${percentage}%` }}
                 >
@@ -805,30 +804,30 @@ export default function App() {
 
           {/* New level unlocked notification */}
           {newLevelUnlocked && (
-            <div className="bg-gradient-to-r from-yellow-500/20 to-amber-500/20 border-2 border-yellow-500/50 rounded-2xl p-4 mb-6 animate-bounce-in">
-              <p className="text-yellow-300 font-bold text-lg">🔓 New Level Unlocked!</p>
-              <p className="text-yellow-200/70">{getLevelLabel(newLevelUnlocked)} Tenses are now available!</p>
+            <div className="bg-gradient-to-r from-cyan-200/15 to-violet-300/15 border border-cyan-300/40 rounded-2xl p-4 mb-6 animate-bounce-in">
+              <p className="text-cyan-200 font-bold text-lg">🔓 New Level Unlocked!</p>
+              <p className="text-cyan-100/80">{getLevelLabel(newLevelUnlocked)} Tenses are now available!</p>
             </div>
           )}
 
           {/* Wrong answers review */}
           {wrongAnswers.length > 0 && (
-            <div className="bg-red-500/10 border-2 border-red-500/30 rounded-2xl p-6 mb-6 text-left">
-              <h3 className="font-bold text-red-300 mb-3 flex items-center gap-2">
+            <div className="bg-rose-400/[0.06] border border-rose-400/30 rounded-2xl p-6 mb-6 text-left backdrop-blur-sm">
+              <h3 className="font-bold text-rose-200 mb-3 flex items-center gap-2">
                 <span>📝</span> Review your mistakes ({wrongAnswers.length})
               </h3>
               <div className="space-y-3 max-h-64 overflow-y-auto pr-2">
                 {wrongAnswers.map((item, i) => (
-                  <div key={i} className="bg-slate-900/50 border border-red-500/20 rounded-xl p-3">
+                  <div key={i} className="bg-white/[0.02] border border-rose-400/15 rounded-xl p-3">
                     <p className="text-slate-200 mb-2 text-sm">
                       <span className="text-slate-500 mr-2">Q{i + 1}.</span>
                       {item.question.sentence}
                     </p>
                     <div className="flex flex-wrap gap-2 text-xs">
-                      <span className="bg-red-500/20 border border-red-500/40 text-red-200 px-2 py-1 rounded">
+                      <span className="bg-rose-400/15 border border-rose-400/30 text-rose-200 px-2 py-1 rounded">
                         Your answer: {item.question.options[item.selected]}
                       </span>
-                      <span className="bg-green-500/20 border border-green-500/40 text-green-200 px-2 py-1 rounded">
+                      <span className="bg-teal-300/15 border border-teal-300/30 text-teal-100 px-2 py-1 rounded">
                         Correct: {item.question.options[item.question.correctIndex]}
                       </span>
                     </div>
@@ -867,7 +866,7 @@ export default function App() {
 
   const renderComplete = () => (
     <div className="min-h-screen relative overflow-hidden flex items-center justify-center" style={{
-      background: 'linear-gradient(180deg, #2a1a3a 0%, #1a0f2a 50%, #1a1a2e 100%)',
+      background: 'radial-gradient(ellipse at 50% 18%, rgba(250,204,21,0.10), transparent 45%), radial-gradient(ellipse at 50% 88%, rgba(139,92,246,0.18), transparent 42%), #020617',
     }}>
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-1/3 left-1/3 w-80 h-80 bg-yellow-500 rounded-full blur-3xl animate-pulse"></div>
@@ -877,11 +876,11 @@ export default function App() {
 
       <div className="relative z-10 max-w-lg mx-auto px-4 text-center">
         <div className="text-8xl mb-6 animate-bounce-in">🎓</div>
-        <h1 className="text-5xl font-bold mb-4 font-serif" style={{
-          background: 'linear-gradient(to right, #fbbf24, #f59e0b, #d97706)',
+        <h1 className="text-5xl font-bold mb-4 font-display" style={{
+          background: 'linear-gradient(100deg, #a5f3fc 0%, #5eead4 45%, #a5b4fc 100%)',
           WebkitBackgroundClip: 'text',
+          backgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
-          textShadow: 'none',
         }}>
           Congratulations!
         </h1>
@@ -890,8 +889,8 @@ export default function App() {
         </p>
 
         <Card3D hoverId="complete">
-          <div className="bg-slate-800/80 border-2 border-yellow-500/30 rounded-2xl p-8 mb-8 shadow-2xl shadow-yellow-500/10">
-            <p className="text-5xl font-bold text-yellow-400 mb-2" style={{ textShadow: '0 0 30px rgba(251,191,36,0.5)' }}>
+          <div className="bg-white/[0.04] backdrop-blur-sm border border-cyan-300/30 rounded-2xl p-8 mb-8 shadow-2xl shadow-cyan-500/10">
+            <p className="text-5xl font-bold text-cyan-200 mb-2" style={{ textShadow: '0 0 30px rgba(165,243,252,0.4)' }}>
               {totalXP} XP
             </p>
             <p className="text-slate-400 text-lg">Total Experience Earned</p>
